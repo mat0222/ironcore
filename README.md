@@ -1,73 +1,79 @@
-# React + TypeScript + Vite
+# IronCore Gym
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Sitio web y panel de administración de **IronCore Gym**, un gimnasio pensado para inscripciones, consulta de planes, horarios y clases, y gestión interna de socios.
 
-Currently, two official plugins are available:
+Identidad visual oscura, tipografía deportiva y acento lima (`#C8FF00`).
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Stack
 
-## React Compiler
+| Tecnología | Uso |
+| --- | --- |
+| React 19 + TypeScript | Interfaz y tipado |
+| Vite 7 | Bundler y servidor de desarrollo |
+| Tailwind CSS 4 | Estilos |
+| React Router 7 | Navegación |
+| Lucide | Iconografía |
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Requisitos
 
-## Expanding the ESLint configuration
+- Node.js 20 o superior
+- npm
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Puesta en marcha
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm install
+npm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+La aplicación queda disponible en `http://localhost:5173`.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm run build    # compilación de producción
+npm run preview  # vista previa del build
+npm run lint     # ESLint
 ```
+
+## Sitio público
+
+| Ruta | Sección |
+| --- | --- |
+| `/` | Inicio: hero, beneficios, planes, horarios y clases |
+| `/planes` | Planes Básico, Full y Premium |
+| `/horarios` | Grilla semanal de turnos |
+| `/clases` | Catálogo de clases grupales |
+| `/nosotros` | Historia, contacto y ubicación |
+| `/inscripcion` | Alta de socio en 5 pasos |
+
+El botón **Ingresar** del navbar abre el acceso al panel.
+
+## Panel de administración
+
+| Ruta | Módulo |
+| --- | --- |
+| `/login` | Acceso al panel |
+| `/admin` | Dashboard de socios, ingresos, asistencias y pagos |
+| `/admin/socios` | Listado de socios |
+| `/admin/inscripciones` | Inscripciones |
+| `/admin/turnos` | Turnos |
+| `/admin/asistencias` | Registro de asistencias |
+| `/admin/pagos` | Historial de pagos |
+| `/admin/clases` | Clases |
+| `/admin/profesores` | Profesores |
+| `/admin/reportes` | Indicadores |
+| `/admin/notificaciones` | Notificaciones |
+| `/admin/configuracion` | Datos del gimnasio y tema |
+
+## Estructura
+
+```
+src/
+  components/        Layout público, navbar, footer y shell del admin
+  pages/             Inicio, planes, horarios, clases, nosotros, inscripción y login
+  pages/admin/       Dashboard y módulos de gestión
+  data.ts            Contenido y datos de referencia
+```
+
+## Estado actual
+
+La interfaz replica el diseño funcional de IronCore. Los datos son de referencia en el cliente; aún no hay backend ni persistencia.
