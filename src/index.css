@@ -1,0 +1,38 @@
+@import "tailwindcss";
+
+@theme {
+  --color-lime: #c8ff00;
+  --color-lime-dim: #9fcc00;
+  --color-ink: #0a0b0d;
+  --color-panel: #111316;
+  --color-card: #1a1d21;
+  --color-line: #2a2e34;
+  --color-muted: #9aa0a6;
+  --font-display: "Oswald", sans-serif;
+  --font-sans: "Inter", sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  background: #0a0b0d;
+  color: #fff;
+  font-family: var(--font-sans);
+}
+
+#root {
+  min-height: 100vh;
+}
+
+::selection {
+  background: #c8ff00;
+  color: #0a0b0d;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: invert(1);
+}
